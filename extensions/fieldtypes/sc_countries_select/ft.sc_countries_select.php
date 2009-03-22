@@ -7,7 +7,7 @@ if ( ! defined('EXT')) exit('Invalid file request');
  * Countries Select Class
  * @package   Countries Select
  * @author    Sue Crocker (shecodes@gmail.com)
- * @copyright Based on code created by Ryan Irelan
+ * @acknowldgement Based on code created by Ryan Irelan
  * @license   http://creativecommons.org/licenses/by-sa/3.0/ Attribution-Share Alike 3.0 Unported
  */
 
