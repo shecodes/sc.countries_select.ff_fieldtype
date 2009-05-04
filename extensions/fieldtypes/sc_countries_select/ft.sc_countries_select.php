@@ -12,19 +12,19 @@ if ( ! defined('EXT')) exit('Invalid file request');
  */
 
 class Sc_countries_select extends Fieldframe_Fieldtype {
-	                                                 
+
 	var $info = array(
 			'name'             => 'SC Countries Select',
-			'version'          => '0.99',
+			'version'          => '1.0.0',
 			'desc'             => 'Creates a select menu with the 239 ISO 3166-1 ISO 2 digit country codes and names.',
 			'docs_url'         => 'http://eehowto.com'
 			);
-			
-			
+
+
 		function display_field($field_name, $field_data, $field_settings)
 		{
 		 	global $DSP;
-			$countries = array( 
+			$countries = array(
 			'US'=>"United States",
 			'CA'=>"Canada",
 			'GB'=>"United Kingdom",
@@ -267,13 +267,28 @@ class Sc_countries_select extends Fieldframe_Fieldtype {
 			'YU'=>"Yugoslavia",
 			'ZM'=>"Zambia",
 			'ZW'=>"Zimbabwe");
-												
+
 			$r = $DSP->input_select_header($field_name);
+			$r .= $DSP->input_select_option('', '--');
 			foreach ($countries as $key => $value):
 				$r .= $DSP->input_select_option($key, $value, $field_data == $key);
 			endforeach;
-			$r .= $DSP->input_select_footer();			
-			return $r; 
+			$r .= $DSP->input_select_footer();
+			return $r;
+		}
+
+		/**
+		 * Display Cell
+		 *
+		 * @param  string  $cell_name      The cell's name
+		 * @param  mixed   $cell_data      The cell's current value
+		 * @param  array   $cell_settings  The cell's settings
+		 * @return string  The cell's HTML
+		 * @author Brandon Kelly <me@brandon-kelly.com>
+		 */
+		function display_cell($cell_name, $cell_data, $cell_settings)
+		{
+			return $this->display_field($cell_name, $cell_data, $cell_settings);
 		}
 }
 
